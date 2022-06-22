@@ -30,7 +30,7 @@ pipeline {
         }
         stage ('Deploy to Docker') {
             steps {
-                sh 'docker push okip/fullcicd + ":$BUILD_NUMBER" '
+                sh 'docker push okip/fullcicd' + ":$BUILD_NUMBER" 
             }
         }
      }
