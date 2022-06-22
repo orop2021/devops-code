@@ -30,7 +30,11 @@ pipeline {
         }
         stage ('Deploy to Docker') {
             steps {
-                sh 'docker push okip/fullcicd' + ":$BUILD_NUMBER" 
+                script{
+                     docker.withRegistry( '', registryCredential ) {
+                     sh 'docker push okip/fullcicd' + ":$BUILD_NUMBER"
+                    }
+                } 
             }
         }
      }
